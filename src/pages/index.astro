@@ -178,10 +178,6 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup } from 'accessible-astro-
     scroll-behavior: smooth;
   }
 
-  body {
-    padding-top: 100px; /* Account for fixed header */
-  }
-
   /* Custom spacing for sections with anchor navigation */
   section[id] {
     scroll-margin-top: 120px;
@@ -190,8 +186,6 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup } from 'accessible-astro-
   /* Ensure proper spacing for the first section */
   #home {
     scroll-margin-top: 0;
-    margin-top: -100px; /* Compensate for body padding */
-    padding-top: 100px; /* Restore spacing */
   }
 
   /* Style improvements for contact section */
