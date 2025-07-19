@@ -9,8 +9,8 @@ import Logo from './Logo.astro'
  */
 ---
 
-<div id="main-navigation" class="py-4 fixed top-0 left-0 right-0 z-50 bg-white dark:bg-neutral-900 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 shadow-sm">
-  <div class="container">
+<div id="main-navigation" class="py-4 fixed top-0 left-0 right-0 z-50 bg-white dark:bg-neutral-900 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 shadow-sm overflow-x-auto">
+  <div class="container min-w-fit px-4">
     <Logo />
     <div class="wrapper">
       <nav class="desktop-menu" aria-label="Main navigation desktop">
@@ -214,6 +214,18 @@ import Logo from './Logo.astro'
         const targetId = anchor.getAttribute('href')?.substring(1)
         const targetElement = document.getElementById(targetId || '')
         
+        // Close mobile menu when clicking a link
+        const mobileMenu = document.querySelector('.mobile-menu') as HTMLElement
+        const responsiveToggle = document.querySelector('.responsive-toggle') as HTMLElement
+        if (mobileMenu && mobileMenu.classList.contains('show')) {
+          mobileMenu.classList.remove('show')
+          // Also update the toggle button state
+          const toggleButton = responsiveToggle?.querySelector('button')
+          if (toggleButton) {
+            toggleButton.setAttribute('aria-expanded', 'false')
+          }
+        }
+        
         if (targetElement) {
           const headerElement = document.querySelector('#main-navigation') as HTMLElement
           const headerHeight = headerElement?.offsetHeight || 0
@@ -246,11 +258,15 @@ import Logo from './Logo.astro'
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      max-width: 100vw;
+      box-sizing: border-box;
     }
 
     // Mobile-first: show mobile menu by default
     .mobile-menu {
       display: none;
+      width: 100%;
+      box-sizing: border-box;
 
       &.show {
         display: block;
@@ -286,6 +302,7 @@ import Logo from './Logo.astro'
       display: flex;
       align-items: center;
       gap: var(--space-m);
+      flex-shrink: 0;
     }
 
     a,
@@ -344,10 +361,13 @@ import Logo from './Logo.astro'
       border: 1px solid var(--border-color-subtle);
       border-radius: var(--radius-l);
       padding: var(--space-m);
+      max-width: 100%;
+      box-sizing: border-box;
 
       > ul {
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
 
         ul {
           position: relative;
@@ -360,6 +380,7 @@ import Logo from './Logo.astro'
         display: block;
         padding: var(--space-2xs) 0;
         inline-size: 100%;
+        text-align: left;
       }
     }
 
