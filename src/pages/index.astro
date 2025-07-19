@@ -35,7 +35,7 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup } from 'accessible-astro-
       </div>
     </div>
   </section>
-  <ContentMedia imgSrc="/undraw_construction-workers_z99i.svg">
+  <ContentMedia imgSrc="/accessible-components.webp">
     <h2>Gemeinsam reparieren</h2>
     <p class="text-2xl">
       Im Repair Café möchten wir gemeinsam reparieren, Wissen teilen und Hilfe zur Selbsthilfe geben. 
@@ -44,7 +44,7 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup } from 'accessible-astro-
       Messgeräten und eventuell zur Reparatur benötigte Materialien in geringem Umfang.
     </p>
   </ContentMedia>
-  <ContentMedia imgSrc="/undraw_neighbors_z879.svg" reverseImg={true}>
+  <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
     <h2>Unentgeltlich & Nachbarschaftlich</h2>
     <p class="text-2xl">
       Das Angebot ist nicht kommerziell ausgelegt und erfolgt unentgeltlich. Das Angebot ist im Wege der 
@@ -172,35 +172,6 @@ import { Accordion, AccordionItem, Avatar, AvatarGroup } from 'accessible-astro-
     </div>
   </section>
 </DefaultLayout>
-
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Custom spacing for sections with anchor navigation */
-  section[id] {
-    scroll-margin-top: 120px;
-  }
-
-  /* Ensure proper spacing for the first section */
-  #home {
-    scroll-margin-top: 0;
-  }
-
-  /* Style improvements for contact section */
-  #contact h3 {
-    color: var(--color-primary);
-  }
-
-  #contact a {
-    transition: color 0.3s ease;
-  }
-
-  #contact a:hover {
-    color: var(--color-primary);
-  }
-</style>
 
 <style>
   .avatar {

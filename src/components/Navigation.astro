@@ -204,41 +204,6 @@ import Logo from './Logo.astro'
       })
 
     setActiveMenuItem()
-    
-    // Smooth scrolling for anchor links
-    const anchorLinks = document.querySelectorAll('a[href^="#"]')
-    anchorLinks.forEach(link => {
-      link.addEventListener('click', function(e: Event) {
-        e.preventDefault()
-        const anchor = e.currentTarget as HTMLAnchorElement
-        const targetId = anchor.getAttribute('href')?.substring(1)
-        const targetElement = document.getElementById(targetId || '')
-        
-        // Close mobile menu when clicking a link
-        const mobileMenu = document.querySelector('.mobile-menu') as HTMLElement
-        const responsiveToggle = document.querySelector('.responsive-toggle') as HTMLElement
-        if (mobileMenu && mobileMenu.classList.contains('show')) {
-          mobileMenu.classList.remove('show')
-          // Also update the toggle button state
-          const toggleButton = responsiveToggle?.querySelector('button')
-          if (toggleButton) {
-            toggleButton.setAttribute('aria-expanded', 'false')
-          }
-        }
-        
-        if (targetElement) {
-          const headerElement = document.querySelector('#main-navigation') as HTMLElement
-          const headerHeight = headerElement?.offsetHeight || 0
-          const targetPosition = targetElement.offsetTop - headerHeight - 20
-          
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          })
-        }
-      })
-    })
-    
     window.addEventListener('click', (event: MouseEvent) => {
       const element = event.target as Element
       if (!element.hasAttribute('aria-haspopup') && !element.classList.contains('submenu-item')) {
